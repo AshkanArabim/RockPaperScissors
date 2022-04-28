@@ -31,21 +31,29 @@
         }
 
         function playRound(player1, player2) {
-            console.log(`Player 1: ${player1}`)
-            console.log(`Player 2: ${player2}`)
+            let winner;
+            console.log(`\tPlayer 1: ${player1}`)
+            console.log(`\tPlayer 2: ${player2}`)
             if (player1 === player2) {
-                console.log('tie');
+                console.log('\ttie');
             } else {
                 if ((player1 === 'rock' && player2 === 'scissors') || (player1 === 'paper' && player2 === 'rock') || (player1 === 'scissors' && player2 === 'paper')) {
-                    console.log('Player 1 wins!')
+                    console.log('\tPlayer 1 wins!')
+                    winner = 'p1';
                 } else {
-                    console.log('Player 2 wins!')
+                    console.log('\tPlayer 2 wins!')
+                    winner = 'p2';
                 }
             }
         }
 
-        function rps() {
-            playRound(playerPlay(), computerPlay());
+        function game() {
+            let p1wins;
+            let p2wins;
+            for (i = 1; i <= 5; ++i) {
+                console.log(`Round ${i} :`);
+                playRound(playerPlay(), computerPlay());
+            }
         };
     </script>
 </body>
