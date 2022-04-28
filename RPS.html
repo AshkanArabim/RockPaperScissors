@@ -8,15 +8,55 @@
 </head>
 <body>
     <script>
-        let computerSelection = computerPlay();
-        let playerSelection = 
-
         function computerPlay() {
-            let choice = Math.floor(Math.random()*3 + 1);
+            let randomizer = Math.floor(Math.random()*3 + 1);
+            let choice = '';
+            switch(randomizer) {
+                case 1 : choice = 'rock';
+                case 2 : choice = 'paper';
+                case 3 : choice = 'scissors';
+            }
+
             return choice;
         }
-        
 
+        function playerPlay() {
+            let choice = prompt('Please choose one of the following: Rock, Paper, Scissors').toLowerCase();
+
+            while (!['rock','paper','scissors'].includes(choice)) {
+                choice = prompt('That is not a valid choice. Please choose one of the following: Rock, Paper, Scissors').toLowerCase();
+            }
+
+            return choice;
+        }
+
+        function playRound(playerChoice, computerChoice) {
+            if (playerChoice === computerChoice) {
+                return 'tie';
+            } else if ([['rock','scissors'],['scissros','rock']].includes([playerChoice, computerChoice])) {
+                if (playerChoice === 'rock') {
+                    console.log('You won!');
+                } else {
+                    console.log('Computer won!');
+                }
+            } else if ([['rock','paper'],['paper','rock']].includes([playerChoice, computerChoice])) {
+                if (playerChoice === 'paper') {
+                    console.log('You won!');
+                } else {
+                    console.log('Computer won!')
+                }
+            } else if ([['scissors','paper'],['paper','scissors']].includes([playerChoice, computerChoice])) {
+                if (playerChoice === 'scissors') {
+                    console.log('You won!')
+                } else {
+                    console.log('Computer won!')
+                }
+            }
+        }
+
+        function rps() {
+            playRound(playerPlay(), computerPlay());
+        };
     </script>
 </body>
 </html>
