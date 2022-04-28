@@ -12,9 +12,9 @@
             let randomizer = Math.floor(Math.random()*3 + 1);
             let choice = '';
             switch(randomizer) {
-                case 1 : choice = 'rock';
-                case 2 : choice = 'paper';
-                case 3 : choice = 'scissors';
+                case 1 : choice = 'rock'; break;
+                case 2 : choice = 'paper'; break;
+                case 3 : choice = 'scissors'; break;
             }
 
             return choice;
@@ -30,26 +30,40 @@
             return choice;
         }
 
-        function playRound(playerChoice, computerChoice) {
+        // function playRound(playerChoice, computerChoice) {
+        //     if (playerChoice === computerChoice) {
+        //         console.log('tie');
+        //     } else if ([['rock','scissors'],['scissors','rock']].includes([playerChoice, computerChoice])) {
+        //         if (playerChoice === 'rock') {
+        //             console.log('You won!');
+        //         } else {
+        //             console.log('Computer won!');
+        //         }
+        //     } else if ([['rock','paper'],['paper','rock']].includes([playerChoice, computerChoice])) {
+        //         if (playerChoice === 'paper') {
+        //             console.log('You won!');
+        //         } else {
+        //             console.log('Computer won!')
+        //         }
+        //     } else if ([['scissors','paper'],['paper','scissors']].includes([playerChoice, computerChoice])) {
+        //         if (playerChoice === 'scissors') {
+        //             console.log('You won!')
+        //         } else {
+        //             console.log('Computer won!')
+        //         }
+        //     }
+        // }
+
+        function playRound(player1, player2) {
+            console.log(`Player 1: ${player1}`)
+            console.log(`Player 2: ${player2}`)
             if (playerChoice === computerChoice) {
-                return 'tie';
-            } else if ([['rock','scissors'],['scissros','rock']].includes([playerChoice, computerChoice])) {
-                if (playerChoice === 'rock') {
-                    console.log('You won!');
+                console.log('tie');
+            } else {
+                if ((player1 === 'rock' && player2 === 'scissors') || (player1 === 'paper' && player2 === 'rock') || (player1 === 'scissors' && player2 === 'paper')) {
+                    console.log('Player 1 wins!')
                 } else {
-                    console.log('Computer won!');
-                }
-            } else if ([['rock','paper'],['paper','rock']].includes([playerChoice, computerChoice])) {
-                if (playerChoice === 'paper') {
-                    console.log('You won!');
-                } else {
-                    console.log('Computer won!')
-                }
-            } else if ([['scissors','paper'],['paper','scissors']].includes([playerChoice, computerChoice])) {
-                if (playerChoice === 'scissors') {
-                    console.log('You won!')
-                } else {
-                    console.log('Computer won!')
+                    console.log('Player 2 wins!')
                 }
             }
         }
