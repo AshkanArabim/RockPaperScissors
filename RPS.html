@@ -21,10 +21,10 @@
         }
 
         function playerPlay() {
-            let choice = prompt('Please choose one of the following: Rock, Paper, Scissors').toLowerCase();
+            let choice = prompt('Please choose one of the following: Rock, Paper, Scissors (You are player 1)').toLowerCase();
 
             while (!['rock','paper','scissors'].includes(choice)) {
-                choice = prompt('That is not a valid choice. Please choose one of the following: Rock, Paper, Scissors').toLowerCase();
+                choice = prompt('That is not a valid choice. Please choose one of the following: Rock, Paper, Scissors (You are player 1)').toLowerCase();
             }
 
             return choice;
@@ -38,10 +38,10 @@
                 console.log('\ttie');
             } else {
                 if ((player1 === 'rock' && player2 === 'scissors') || (player1 === 'paper' && player2 === 'rock') || (player1 === 'scissors' && player2 === 'paper')) {
-                    console.log('\tPlayer 1 wins!')
+                    console.log('\tWinner: Player 1')
                     winner = 'p1';
                 } else {
-                    console.log('\tPlayer 2 wins!')
+                    console.log('\tWinner: Player 2')
                     winner = 'p2';
                 }
             }
@@ -49,8 +49,8 @@
         }
 
         function game() {
-            let p1wins;
-            let p2wins;
+            let p1wins = 0;
+            let p2wins = 0;
 
             for (i = 1; i <= 5; ++i) {
                 console.log(`Round ${i} :`);
