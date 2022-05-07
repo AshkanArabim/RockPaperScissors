@@ -68,7 +68,7 @@ let p1wins = 0;
 let p2wins = 0;
 
 function game(choice) {
-  console.log(`----------\nRound ${i} :`);
+  console.log(`Round ${i} :`);
   let winner = playRound(choice, computerPlay());
   i++;
 
@@ -83,7 +83,7 @@ function game(choice) {
       break;
   }
 
-  console.log(`Human: ${p1wins}\nComputer: ${p2wins}`);
+  console.log(`Human: ${p1wins}\nComputer: ${p2wins}\n----------`);
   //   if (p1wins > p2wins) {
   //     console.log("The final winner is Player 1!");
   //   } else if (p1wins < p2wins) {
@@ -98,7 +98,16 @@ let choices = document.querySelectorAll("button.choice");
 
 choices.forEach((button) =>
   button.addEventListener("click", () => {
+    if (p1wins >= 5 || p2wins >= 5) {
+      console.log("game is over");
+      return;
+    }
     choice = button.id;
     game(choice);
+    if (p1wins >= 5) {
+      console.log("Human has won");
+    } else if (p2wins >= 5) {
+      console.log("Computer has won");
+    }
   })
 );
