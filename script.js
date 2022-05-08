@@ -66,11 +66,20 @@ function playRound(player1, player2) {
 i = 0;
 let p1wins = 0;
 let p2wins = 0;
+let round = document.querySelector("#round");
+let hchoice = document.querySelector("#hchoice");
+let hwins = document.querySelector("#hwins");
+let cchoice = document.querySelector("#cchoice");
+let cwins = document.querySelector("#cwins");
+let gameover = document.querySelector("#gameover");
+let winner = document.querySelector("#winner");
+let computerChoice;
 
 function game(choice) {
-  console.log(`Round ${i} :`);
-  let winner = playRound(choice, computerPlay());
   i++;
+  console.log(`Round ${i} :`);
+  computerChoice = computerPlay();
+  let winner = playRound(choice, computerChoice);
 
   switch (winner) {
     case "p1":
@@ -96,18 +105,29 @@ function game(choice) {
 let choice = "";
 let choices = document.querySelectorAll("button.choice");
 
-choices.forEach((button) =>
-  button.addEventListener("click", () => {
-    if (p1wins >= 5 || p2wins >= 5) {
-      console.log("game is over");
-      return;
-    }
-    choice = button.id;
-    game(choice);
-    if (p1wins >= 5) {
-      console.log("Human has won");
-    } else if (p2wins >= 5) {
-      console.log("Computer has won");
-    }
-  })
-);
+function renderer() {
+  if (p1wins >= 5 || p2wins >= 5) {
+    console.log("game is over");
+    gameover.textContent = "Sorry pal, game is over. Refresh to start over.";
+    return;
+  }
+  choice = this.id;
+
+  game(choice);
+
+  round.textContent = `Round ${i}`;
+  hchoice.textContent = `Human's choice: ${choice}`;
+  hwins.textContent = `Human's wins: ${p1wins}`;
+  cchoice.textContent = `Computer's choice: ${computerChoice}`;
+  cwins.textContent = `Computer's wins: ${p2wins}`;
+
+  if (p1wins >= 5) {
+    console.log("Human has won");
+    winner.textContent = "Human has won";
+  } else if (p2wins >= 5) {
+    console.log("Computer has won");
+    winner.textContent = "Computer has won";
+  }
+}
+
+choices.forEach((button) => button.addEventListener("click", renderer));
